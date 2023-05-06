@@ -20,6 +20,7 @@
     "migrate:test:reset": "npm run env:test -- npx prisma migrate reset"
   },
   "dependencies": {
+    "@clerk/nextjs": "^4.17.1",
     "@prisma/client": "^4.13.0",
     "@types/node": "20.0.0",
     "@types/react": "18.2.5",
