@@ -7,12 +7,7 @@ import FormLink from "../form/FormLink";
 import FormSection from "../form/FormSection";
 import FormText from "../form/FormText";
 
-type Input = {
-  email: string;
-  name: string;
-  detail: string;
-  link: string;
-};
+type Input = Omit<Register, "id" | "createdAt">;
 
 type RegisterFormProps = {
   onSuccess?: (input: Register) => void | Promise<void>;

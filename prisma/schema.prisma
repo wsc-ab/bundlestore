@@ -10,21 +10,11 @@ datasource db {
   shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
-model Store {
+model Register {
   id        Int      @id @default(autoincrement())
+  email     String
   name      String
-  link      String   @unique
-  image     String
+  link      String   
+  detail    String
   createdAt DateTime @default(now())
-  userId    Int
-  User      User     @relation(fields: [userId], references: [id])
-}
-
-model User {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  image     String
-  createdAt DateTime @default(now())
-  Store     Store[]
 }
