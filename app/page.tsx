@@ -1,12 +1,18 @@
-import { SignInButton, UserButton } from "@clerk/nextjs";
+import CTA from "@/components/home/CTA";
+import Hero from "@/components/home/Hero";
+
+import Features from "@/components/home/Features";
+import LogoClouds from "@/components/home/LogoClouds";
+import Pricing from "@/components/home/Pricing";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div>
-        <UserButton />
-        <SignInButton />
-      </div>
+    <main>
+      <Hero />
+      <Features />
+      <LogoClouds />
+      <Pricing />
+      <CTA />
     </main>
   );
 }

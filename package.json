@@ -1,15 +1,18 @@
 {
-  "name": "h",
+  "name": "bundlestore",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:test": "dotenv -e .env.local next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "env:dev": "dotenv -e .env.development.local",
-    "env:test": "dotenv -e .env.test.local",
+    "env:test": "dotenv -e .env.local",
+    "up": "docker-compose up -d",
     "studio:dev": "npm run env:dev -- npx prisma studio",
+    "studio:test": "npm run env:test -- npx prisma studio",
     "db:dev:pull": "npm run env:dev -- npx prisma db pull",
     "db:dev:push": "npm run env:dev -- npx prisma db push",
     "db:test:pull": "npm run env:test -- npx prisma db pull",
@@ -21,6 +24,8 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.17.1",
+    "@headlessui/react": "^1.7.14",
+    "@heroicons/react": "^2.0.17",
     "@prisma/client": "^4.13.0",
     "@types/node": "20.0.0",
     "@types/react": "18.2.5",
@@ -36,5 +41,10 @@
     "react-dom": "18.2.0",
     "tailwindcss": "3.3.2",
     "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/typography": "^0.5.9"
   }
 }
