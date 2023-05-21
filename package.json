@@ -21,7 +21,10 @@
     "prisma:pull:prod": "npm run env:prod -- npx prisma db pull",
     "prisma:push:local": "npm run env:local -- npx prisma db push",
     "prisma:dev": "npm run env:local -- npx prisma migrate dev --name",
-    "prisma:reset:local": "npm run env:local -- npx prisma migrate reset"
+    "prisma:reset:local": "npm run env:local -- npx prisma migrate reset",
+    "kill": "npx --yes kill-port 3000",
+    "test:e2e": "npx playwright test",
+    "test:e2e:ui": "npx playwright test --ui"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.17.1",
@@ -40,6 +43,7 @@
     "prisma": "^4.13.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-dropzone": "^14.2.3",
     "react-hook-form": "^7.43.9",
     "tailwindcss": "3.3.2",
     "typescript": "5.0.4"
