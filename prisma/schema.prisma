@@ -10,39 +10,21 @@ datasource db {
   shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
-
 model Store {
-  id        Int       @id @default(autoincrement())
-  name      String
-  detail    String
-  link      String    @unique
-  images    String[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @default(now())
-  products  Product[]
-  userId    String
-}
-
-model Product {
   id        Int      @id @default(autoincrement())
   name      String
-  detail    String
   link      String   @unique
-  price     Int
-  images    String[]
+  image     String
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
-  storeId   Int
-  userId    String
-  store     Store    @relation(fields: [storeId], references: [id])
-  orders    Order[]
+  userId    Int
+  User      User     @relation(fields: [userId], references: [id])
 }
 
-model Order {
-  id         Int       @id @default(autoincrement())
-  userId    String
-  products   Product[]
-  discountRate Int
-  totalPrice Int
-  createdAt  DateTime  @default(now())
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  image     String
+  createdAt DateTime @default(now())
+  Store     Store[]
 }

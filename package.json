@@ -4,23 +4,21 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "dev:test": "dotenv -e .env.local next dev",
+    "dev:local": "dotenv -e .env.local next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "env:dev": "dotenv -e .env.development.local",
-    "env:test": "dotenv -e .env.local",
+    "env:local": "dotenv -e .env.local",
     "up": "docker-compose up -d",
     "studio:dev": "npm run env:dev -- npx prisma studio",
-    "studio:test": "npm run env:test -- npx prisma studio",
+    "studio:local": "npm run env:local -- npx prisma studio",
     "db:dev:pull": "npm run env:dev -- npx prisma db pull",
-    "db:dev:push": "npm run env:dev -- npx prisma db push",
-    "db:test:pull": "npm run env:test -- npx prisma db pull",
-    "db:test:push": "npm run env:test -- npx prisma db push",
+    "db:local:push": "npm run env:local -- npx prisma db push",
     "migrate:dev:dev": "npm run env:dev -- npx prisma migrate dev --name",
     "migrate:dev:reset": "npm run env:dev -- npx prisma migrate reset",
-    "migrate:test:dev": "npm run env:test -- npx prisma migrate dev --name",
-    "migrate:test:reset": "npm run env:test -- npx prisma migrate reset"
+    "migrate:local:dev": "npm run env:local -- npx prisma migrate dev --name",
+    "migrate:local:reset": "npm run env:local -- npx prisma migrate reset"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.17.1",
@@ -39,6 +37,7 @@
     "prisma": "^4.13.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.43.9",
     "tailwindcss": "3.3.2",
     "typescript": "5.0.4"
   },

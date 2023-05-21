@@ -1,7 +1,12 @@
 import { CheckIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 
-const includedFeatures = ["Free marketing", "SEO optimization", "No setup fee", "24/7 support"];
+const includedFeatures = [
+  "Free marketing",
+  "SEO optimization",
+  "No setup fee",
+  "24/7 support",
+];
 
 export default function Example() {
   return (
@@ -53,7 +58,7 @@ export default function Example() {
                 <p className="text-base font-semibold text-gray-600">Fee</p>
                 <p className="mt-6 flex items-baseline justify-center gap-x-2">
                   <span className="text-5xl font-bold tracking-tight text-gray-900">
-                    5%
+                    10%
                   </span>
                 </p>
                 <Link
