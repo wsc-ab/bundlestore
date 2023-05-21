@@ -35,8 +35,8 @@ export default function Example() {
               />
               <span>
                 <strong className="font-semibold text-gray-900">Priced.</strong>{" "}
-                Your product must have a price. Otherwise users won't bundle up
-                for discounts.
+                Your product must have a price. Otherwise we cannot give
+                discounts!
               </span>
             </li>
             <li className="flex gap-x-3">
