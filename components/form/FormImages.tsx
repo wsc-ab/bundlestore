@@ -9,7 +9,8 @@ import {
 } from "react";
 import { useDropzone } from "react-dropzone";
 import HeroIcon from "../icons/HeroIcon";
-import RemoteImage from "../images/RemoteImage";
+
+import Image from "next/image";
 import { errorClass } from "./FormClassNames";
 import FormError from "./FormError";
 import FormItem from "./FormItem";
@@ -135,8 +136,10 @@ function FormImages(
               {path.map(({ url }) => (
                 <div className="relative m-4" key={url}>
                   <div className="h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg border border-gray-200 sm:h-40 sm:w-40">
-                    <RemoteImage
-                      image={url}
+                    <Image
+                      src={url}
+                      alt="form-image"
+                      fill
                       className="h-full w-full rounded-lg border border-gray-200 object-cover object-center"
                     />
                     <HeroIcon
