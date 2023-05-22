@@ -24,7 +24,7 @@
     "kill": "npx --yes kill-port 3000",
     "test:e2e": "npx playwright test",
     "test:e2e:ui": "npx playwright test --ui",
-    "docker:up": "docker-compose up -d",
+    "docker:up": "docker-compose up -d"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.17.1",
