@@ -16,6 +16,7 @@
     "prisma:generate": "npx prisma generate",
     "prisma:migrate:deploy": "npx prisma migrate deploy",
     "prisma:studio:local": "npm run env:local -- npx prisma studio",
+    "prisma:studio:prod": "npm run env:prod -- npx prisma studio",
     "prisma:pull:dev": "npm run env:dev -- npx prisma db pull",
     "prisma:pull:prod": "npm run env:prod -- npx prisma db pull",
     "prisma:push:local": "npm run env:local -- npx prisma db push",
@@ -30,7 +31,7 @@
     "@clerk/nextjs": "^4.17.1",
     "@headlessui/react": "^1.7.14",
     "@heroicons/react": "^2.0.17",
-    "@prisma/client": "^4.13.0",
+    "@prisma/client": "^4.14.1",
     "@types/node": "20.0.0",
     "@types/react": "18.2.5",
     "@types/react-dom": "18.2.3",
@@ -40,7 +41,6 @@
     "eslint-config-next": "13.4.0",
     "next": "13.4.0",
     "postcss": "8.4.23",
-    "prisma": "^4.13.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-dropzone": "^14.2.3",
@@ -51,6 +51,7 @@
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.3",
-    "@tailwindcss/typography": "^0.5.9"
+    "@tailwindcss/typography": "^0.5.9",
+    "prisma": "^4.14.1"
   }
 }
