@@ -8,5 +8,7 @@ export async function POST(request: NextRequest) {
     data,
   });
 
-  return NextResponse.json({ register });
+  return NextResponse.json({
+    register,
+  });
 }
