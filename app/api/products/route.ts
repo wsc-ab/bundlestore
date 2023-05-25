@@ -4,11 +4,11 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest) {
   const data = await request.json();
 
-  const register = await prisma.register.create({
+  const product = await prisma.product.create({
     data,
   });
 
   return NextResponse.json({
-    register,
+    product,
   });
 }

@@ -65,7 +65,7 @@ export default function RegisterForm({
       >
         <FormText
           title="Name"
-          help="How should we call you?"
+          help="Whats your name?"
           input={{ placeholder: "First Last", type: "text" }}
           message={errors.name?.message}
           {...register("name", {

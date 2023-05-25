@@ -122,6 +122,7 @@ function FormImages(
                     name="file-upload"
                     type="file"
                     className="sr-only"
+                    default="1"
                   />
                 </label>
                 <p className="pl-1">or drag and drop</p>

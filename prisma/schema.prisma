@@ -18,3 +18,16 @@ model Register {
   detail    String
   createdAt DateTime @default(now())
 }
+
+model Product {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  name      String
+  detail    String
+  link      String  @unique
+  images    String[]
+  price     Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  public    Boolean  @default(false)
+}

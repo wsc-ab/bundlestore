@@ -17,6 +17,7 @@
     "prisma:migrate:deploy": "npx prisma migrate deploy",
     "prisma:studio:local": "npm run env:local -- npx prisma studio",
     "prisma:studio:prod": "npm run env:prod -- npx prisma studio",
+    "prisma:pull:local": "npm run env:local -- npx prisma db pull",
     "prisma:pull:dev": "npm run env:dev -- npx prisma db pull",
     "prisma:pull:prod": "npm run env:prod -- npx prisma db pull",
     "prisma:push:local": "npm run env:local -- npx prisma db push",
