@@ -19,8 +19,7 @@ import FormLabel from "./FormLabel";
 export type Path =
   | {
       url: string;
-      name: string;
-      type: File["type"];
+      file: File;
       remote: false;
     }
   | {
@@ -50,6 +49,7 @@ function FormImages(
   ref: ForwardedRef<HTMLInputElement>
 ) {
   const [path, setPaths] = useState<Path[]>(defaultPaths);
+
   const onDrop = useCallback((acceptedFiles: File[]) => {
     setPaths((pre) => {
       const newFiles = acceptedFiles.filter((elFile) => {
@@ -58,8 +58,7 @@ function FormImages(
         return !pre.some(({ url: elUrl }) => elUrl === objUrl);
       });
       const newPaths = newFiles.map((elFile) => ({
-        name: elFile.name,
-        type: elFile.type,
+        file: elFile,
         url: URL.createObjectURL(elFile),
         remote: false,
       }));

@@ -4,12 +4,12 @@ import { Product } from "@prisma/client";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Form from "../form/Form";
+import FormDetail from "../form/FormDetail";
 import FormImages from "../form/FormImages";
 import FormLink from "../form/FormLink";
 import FormPrice from "../form/FormPrice";
 import FormSection from "../form/FormSection";
 import FormText from "../form/FormText";
-import FormDetail from "../form/FormDetail";
 
 type Path =
   | {
@@ -49,10 +49,23 @@ export default function AddProductForm({
     try {
       setSubmitting(true);
 
-      const response = await fetch("api/products", {
-        method: "POST",
-        body: JSON.stringify(data),
+      // get signed url
+      const res = await fetch("/api/r2/put");
+      const { signedUrl } = await res.json();
+
+      // upload images
+      const response0 = await fetch(signedUrl, {
+        method: "PUT",
+        headers: { "Content-Type": data.images[0].file.type },
+        body: data.images[0].file,
       });
+
+      console.log(response0, "response0");
+
+      // const response = await fetch("/api/products", {
+      //   method: "POST",
+      //   body: { ...data, images: [response0.url] },
+      // });
 
       if (!response.ok) {
         throw new Error(response.statusText);
@@ -63,7 +76,7 @@ export default function AddProductForm({
         onSuccess(product);
       }
     } catch (error) {
-      alert("Please retry");
+      alert(`Please retry: ${error}`);
     } finally {
       setSubmitting(false);
     }

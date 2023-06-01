@@ -8,6 +8,8 @@ export async function POST(request: NextRequest) {
     data,
   });
 
+  console.log(product, "p");
+
   return NextResponse.json({
     product,
   });

@@ -32,7 +32,7 @@ export default function RegisterForm({
     try {
       setSubmitting(true);
 
-      const response = await fetch("api/register", {
+      const response = await fetch("/api/register", {
         method: "POST",
         body: JSON.stringify(data),
       });

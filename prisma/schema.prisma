@@ -14,20 +14,46 @@ model Register {
   id        Int      @id @default(autoincrement())
   email     String
   name      String
-  link      String   
+  link      String
   detail    String
   createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
 }
 
 model Product {
   id        Int      @id @default(autoincrement())
-  userId    String
+  userId    String   @default("user_2QGwmtaOxmCQwcirThbZ3wAVNgJ")
   name      String
   detail    String
-  link      String  @unique
+  link      String   @unique
   images    String[]
   price     Int
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
   public    Boolean  @default(false)
+  story     String[] @default([])
+  order     Order?   @relation(fields: [orderId], references: [id])
+  orderId   Int?
+  cart      Cart?    @relation(fields: [cartId], references: [id])
+  cartId    Int?
+}
+
+model Order {
+  id           Int       @id @default(autoincrement())
+  userId       String
+  totalPrice   Int
+  discountRate Int
+  products     Product[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @default(now())
+}
+
+model Cart {
+  id           Int       @id @default(autoincrement())
+  userId       String    @unique
+  totalPrice   Int
+  discountRate Int
+  products     Product[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @default(now())
 }
