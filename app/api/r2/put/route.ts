@@ -20,5 +20,6 @@ export async function GET() {
 
   return NextResponse.json({
     signedUrl,
+    key: Key,
   });
 }

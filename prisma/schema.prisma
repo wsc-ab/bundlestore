@@ -32,10 +32,9 @@ model Product {
   updatedAt DateTime @default(now())
   public    Boolean  @default(false)
   story     String[] @default([])
-  order     Order?   @relation(fields: [orderId], references: [id])
-  orderId   Int?
-  cart      Cart?    @relation(fields: [cartId], references: [id])
-  cartId    Int?
+  highlights String[] @default([])
+  orders     Order[]
+  carts      Cart[]
 }
 
 model Order {

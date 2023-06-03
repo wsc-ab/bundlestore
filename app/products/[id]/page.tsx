@@ -1,79 +1,22 @@
-"use client";
-
+import RemoteImage from "@/components/images/RemoteImage";
+import { prisma } from "@/utils/Prisma";
 import { classNames } from "@/utils/Tailwind";
 import { Tab } from "@headlessui/react";
 import Image from "next/image";
 import { Fragment } from "react";
 
-const product = {
-  name: "ShipAware",
-  price: "220",
-  description: "Know about shipping issues before customers do",
-  highlights: [
-    "Receive alerts for late shipments",
-    "View shipments by status",
-    "Automate customer service with notifications",
-  ],
-  imageSrc:
-    "https://tailwindui.com/img/ecommerce-images/product-page-05-product-01.jpg",
-  imageAlt: "ShipAware logo",
-};
-const reviews = {
-  average: 4,
-  featured: [
-    {
-      id: 1,
-      rating: 5,
-      content: `
-        This icon pack is just what I need for my latest project. There's an icon for just about anything I could ever need. Love the playful look!
-      `,
-      date: "July 16, 2021",
-      datetime: "2021-07-16",
-      author: "Emily Selman",
-      avatarSrc:
-        "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80",
-    },
-    {
-      id: 2,
-      rating: 5,
-      content: `
-        Blown away by how polished this icon pack is. Everything looks so consistent and each SVG is optimized out of the box so I can use it directly with confidence. It would take me several hours to create a single icon this good, so it's a steal at this price.
-      `,
-      date: "July 12, 2021",
-      datetime: "2021-07-12",
-      author: "Hector Gibbons",
-      avatarSrc:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80",
-    },
-    // More reviews...
-  ],
-};
-const faqs = [
-  {
-    question: "Tell us about yourself.",
-    answer:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque sequi ipsum sunt, obcaecati iure minus voluptatem optio eveniet et, atque pariatur minima repellendus, corrupti consequatur quam vel non labore praesentium!",
-  },
-  {
-    question: "Why did you build this?",
-    answer:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque sequi ipsum sunt, obcaecati iure minus voluptatem optio eveniet et, atque pariatur minima repellendus, corrupti consequatur quam vel non labore praesentium!",
-  },
-  {
-    question: "How did you build this?",
-    answer:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque sequi ipsum sunt, obcaecati iure minus voluptatem optio eveniet et, atque pariatur minima repellendus, corrupti consequatur quam vel non labore praesentium!",
-  },
-  {
-    question: "What features will be added?",
-    answer:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque sequi ipsum sunt, obcaecati iure minus voluptatem optio eveniet et, atque pariatur minima repellendus, corrupti consequatur quam vel non labore praesentium!",
-  },
-  // More FAQs...
-];
+async function getData({ id }: { id: number }) {
+  const product = await prisma.product.findUniqueOrThrow({ where: { id } });
 
-export default function Product({ params }) {
-  console.log(params, "p");
+  return { product };
+}
+
+type ProductProps = {
+  params: { id: string };
+};
+
+export default async function Product({ params: { id } }: ProductProps) {
+  const { product } = await getData({ id: parseInt(id) });
 
   return (
     <div className="bg-white">
@@ -83,11 +26,9 @@ export default function Product({ params }) {
           {/* Product image */}
           <div className="lg:col-span-4 lg:row-end-1">
             <div className="aspect-h-3 aspect-w-4 overflow-hidden rounded-lg bg-gray-100">
-              <Image
-                src={product.imageSrc}
-                alt={product.imageAlt}
+              <RemoteImage
+                src={product.images[0]}
                 className="object-cover object-center"
-                fill
               />
             </div>
           </div>
@@ -128,7 +69,7 @@ export default function Product({ params }) {
               <h3 className="text-sm font-medium text-gray-900">Highlights</h3>
               <div className="prose prose-sm mt-4 text-gray-500">
                 <ul role="list">
-                  {product.highlights.map((highlight) => (
+                  {product.highlights?.map((highlight) => (
                     <li key={highlight}>{highlight}</li>
                   ))}
                 </ul>
@@ -149,7 +90,7 @@ export default function Product({ params }) {
           </div>
 
           <div className="mx-auto mt-16 w-full max-w-2xl lg:col-span-4 lg:mt-0 lg:max-w-none">
-            <Tab.Group as="div">
+            {/* <Tab.Group as="div">
               <div className="border-b border-gray-200">
                 <Tab.List className="-mb-px flex space-x-8">
                   <Tab
@@ -234,7 +175,7 @@ export default function Product({ params }) {
                   ))}
                 </Tab.Panel>
               </Tab.Panels>
-            </Tab.Group>
+            </Tab.Group> */}
           </div>
         </div>
       </div>

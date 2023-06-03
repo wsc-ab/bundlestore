@@ -51,21 +51,23 @@ export default function AddProductForm({
 
       // get signed url
       const res = await fetch("/api/r2/put");
-      const { signedUrl } = await res.json();
+      const { signedUrl, key } = await res.json();
 
       // upload images
-      const response0 = await fetch(signedUrl, {
+      await fetch(signedUrl, {
         method: "PUT",
         headers: { "Content-Type": data.images[0].file.type },
         body: data.images[0].file,
       });
 
-      console.log(response0, "response0");
-
-      // const response = await fetch("/api/products", {
-      //   method: "POST",
-      //   body: { ...data, images: [response0.url] },
-      // });
+      const response = await fetch("/api/products", {
+        method: "POST",
+        body: JSON.stringify({
+          ...data,
+          images: [key],
+          price: data.price * 100,
+        }),
+      });
 
       if (!response.ok) {
         throw new Error(response.statusText);
